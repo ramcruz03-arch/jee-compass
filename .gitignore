@@ -1,0 +1,17 @@
+.dart_tool/
+.packages
+build/
+pubspec.lock
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Never commit these — §31, §39
+.env
+.env.*
+*.keystore
+*.jks
+key.properties
+android/app/google-services.json
+supabase/.env

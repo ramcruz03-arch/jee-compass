@@ -1,5 +1,5 @@
 name: jee_compass
-description: Learning engine for JEE Compass — mastery scoring, spaced repetition, mistake repair, and adaptive question selection.
+description: Learning engine for JEE Compass — mastery scoring, spaced repetition, mistake repair, and adaptive question selection. Pure Dart, no Flutter dependency.
 version: 0.1.0
 publish_to: none
 

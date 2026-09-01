@@ -4,7 +4,11 @@
 // Run: dart test   (add `test: ^1.25.0` to dev_dependencies)
 
 import 'package:test/test.dart';
-import 'package:jee_compass/jee_compass.dart';
+import 'package:jee_compass/domain/models.dart';
+import 'package:jee_compass/domain/mastery.dart';
+import 'package:jee_compass/domain/retention.dart';
+import 'package:jee_compass/domain/adaptive_selector.dart';
+import 'package:jee_compass/domain/mission_generator.dart';
 
 final now = DateTime(2026, 3, 1, 18, 0);
 
