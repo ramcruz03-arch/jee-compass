@@ -1,6 +1,8 @@
 include: package:lints/recommended.yaml
 
 analyzer:
+  exclude:
+    - app/**
   language:
     strict-casts: true
     strict-raw-types: true
