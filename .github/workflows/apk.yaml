@@ -1,0 +1,45 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      # Generate the Android project shell (android/, ios/, pubspec, etc.)
+      # so none of it has to live in the repo.
+      - name: Scaffold Flutter app
+        run: |
+          flutter create --project-name jee_compass --platforms android app_build
+
+      # Drop the engine in as lib/engine/, and the UI as lib/main.dart
+      - name: Wire in engine and UI
+        run: |
+          mkdir -p app_build/lib/engine
+          cp -r lib/* app_build/lib/engine/
+          cp app/main.dart app_build/lib/main.dart
+
+      - name: Build APK
+        run: |
+          cd app_build
+          flutter pub get
+          flutter build apk --debug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jee-compass-apk
+          path: app_build/build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: error
+          
