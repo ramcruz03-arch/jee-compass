@@ -11,15 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Unzip and clean up
-        run: |
-          rm -rf lib
-          unzip -o jee-compass.zip -d .
-          rm -f jee-compass.zip
-      - name: Commit
-        run: |
+      - run: |
+          rm -rf lib test
+          unzip -o *.zip -d .
+          rm -f *.zip
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Unpack engine source" || echo "nothing to commit"
+          git commit -m "Unpack engine" || echo "nothing to commit"
           git push
